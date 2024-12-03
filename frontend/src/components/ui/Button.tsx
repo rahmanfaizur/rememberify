@@ -5,9 +5,10 @@ interface ButtonProps {
     variant: Variants;
     size: "sm" | "md" | "lg";
     text: string;
+    padding: "one"
     startIcon?: ReactElement; //react element means a react component!
     endIcon?: ReactElement;
-    onClick: () => void;
+    onClick?: () => void;
  
 }
 
@@ -25,8 +26,8 @@ const sizeStyles = {
 const defaultStyles = "rounded-md flex"
 export const Button = (props: ButtonProps) => {
     //props.variant, props.onClick....
-    return <button className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
-        <div className="flex">
+    return <button onClick={props.onClick} className={`${variantStyles[props.variant]} ${defaultStyles} ${sizeStyles[props.size]}`}>
+        <div className='flex'>
         {props.startIcon ? <div className="pr-2">{props.startIcon}</div> : null}
         {props.text}
         {props.endIcon}
